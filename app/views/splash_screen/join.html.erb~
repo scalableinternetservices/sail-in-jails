@@ -1,4 +1,4 @@
-<% provide(:title, "Join") %>
+<% provide (:title, "Join") %>
 
 <h1>Join Team Screen</h1>
 <p>This is where all the teams would go that you can join</p>
