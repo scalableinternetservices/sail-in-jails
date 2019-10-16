@@ -2,13 +2,13 @@ require 'test_helper'
 
 class SplashScreenControllerTest < ActionDispatch::IntegrationTest
   test "should get join" do
-    get splash_screen_join_url
+    get join_path
     assert_response :success
     assert_select "title", "Join | Group App"
   end
 
   test "should get create" do
-    get splash_screen_create_url
+    get create_path
     assert_response :success
     assert_select "title", "Create | Group App"
   end
