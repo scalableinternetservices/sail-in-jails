@@ -5,13 +5,13 @@ class TeamsController < ApplicationController
   end
   
   def show
-    @team = Team.find(params[:id])
+    #@team = Team.find(params[:id])
   end 
   
   def create 
     @team = Team.new(team_params)
     if @team.save
-      # Handle successful case
+      render 'show'
     else
       render 'new'
     end 

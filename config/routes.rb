@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'teams/new'
+  get '/show', to: 'teams#show'
   root 'splash_screen#join'
   get '/join', to: 'splash_screen#join'
   get '/create', to: 'splash_screen#create'
