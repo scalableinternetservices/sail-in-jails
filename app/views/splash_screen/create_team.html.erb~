@@ -1,0 +1,5 @@
+<% provide(:title, "Create") %>
+
+<h1>Create Team View</h1>
+<p>This is where the forms to out a new team would be</p>
+

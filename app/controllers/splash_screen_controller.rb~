@@ -1,0 +1,26 @@
+class SplashScreenController < ApplicationController
+  def join
+  end
+
+  def create
+  end
+
+  def create_class
+    @course = Course.new(params[:screate_class_path])
+    if @course.save
+      @new_course = original_url + '/' + @course.id
+    else
+#      render 'new'
+    end
+  end
+  
+  def team_index
+    @teams = Team.all
+  end 
+
+private
+
+
+
+
+end
