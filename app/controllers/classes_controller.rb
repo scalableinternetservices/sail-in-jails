@@ -1,27 +1,38 @@
 class ClassesController < ApplicationController
   def new
     @class = Course.new
-    @class_url = '/'
+    @all_classes = Course.all
+    @class_url = "//"
   end 
 
   def create
-    @class = Course.new(name: :name)
+    @class = Course.create(class_params)
     if @class.save
-      @class_url = request.original_url + '/' + @class.id.to_s
+#      redirect_to '/classes'
+      @class_url = request.base_url + '/' + @class.id.to_s
+      @all_classes = Course.all
       render 'new'
     else
-      @class_url = "failed to create url"
+#      redirect_to '/classes'
+      @all_classes = Course.all
+      @class_url = "failed to create class"
       render 'new'
     end
+
+  end
+
+  def destroy
+    if Course.find(params[:id]).destroy
+    end
+
+    @class = Course.new
+    @all_classes = Course.all
+    redirect_to '/classes'
   end
 
 
 private
-
-
   def class_params
-    params.permit(:name)
+    params.require(:course).permit(:name)
   end
-
-
 end

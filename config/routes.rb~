@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   get '/join', to: 'splash_screen#join'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :teams
+  resources :classes
 end
