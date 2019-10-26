@@ -1,4 +1,4 @@
-class ClassesController < ApplicationController
+class CoursesController < ApplicationController
   def new
     @class = Course.new
     @all_classes = Course.all
@@ -8,12 +8,10 @@ class ClassesController < ApplicationController
   def create
     @class = Course.create(class_params)
     if @class.save
-#      redirect_to '/classes'
       @class_url = request.base_url + '/' + @class.id.to_s
       @all_classes = Course.all
       render 'new'
     else
-#      redirect_to '/classes'
       @all_classes = Course.all
       @class_url = "failed to create class"
       render 'new'
@@ -27,7 +25,7 @@ class ClassesController < ApplicationController
 
     @class = Course.new
     @all_classes = Course.all
-    redirect_to '/classes'
+    redirect_to '/courses'
   end
 
 

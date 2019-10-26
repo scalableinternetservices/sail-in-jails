@@ -4,7 +4,7 @@
 
 <div class = "row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for @class, url: 'classes', local: true, :method=> :POST, :html=>{:id=>"create_form"} do |f| %>
+    <%= form_for @class, url: 'courses', local: true, :method=> :POST, :html=>{:id=>"create_form"} do |f| %>
       <%= f.label :name %>
       <%= f.text_field :name %>
 
@@ -20,7 +20,7 @@
     <h4>Class: <%= x.name %></h4>
     <p> 
       Link: <%= request.base_url + '/' + x.id.to_s %>
-      <%= button_to "delete", class_path(:id => x.id), :method => :delete %>
+      <%= button_to "delete", course_path(:id => x.id), :method => :delete %>
     </p>
   <% end %>
 </div>
