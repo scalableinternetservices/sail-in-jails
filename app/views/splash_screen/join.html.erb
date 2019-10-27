@@ -7,13 +7,12 @@
   <% Team.all.each do |team| %>
     <br>
     <h4>Class: <%= team.course %></h4>
-    <p> 
-      Team Name: <%= link_to team.name, team %> 
+    <p>
+      Team Name: <%= link_to team.name, team %>
       <br>
-      Description: <%= team.desc %> 
+      Description: <%= team.desc %>
       <%= link_to "Join Team Now!", '/show', class: "btn btn-medium btn-primary" %>
     </p>
-    
-    
+
   <% end %>
 </ul>
