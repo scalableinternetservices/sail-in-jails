@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
   root 'splash_screen#join'
 
   get '/show', to: 'teams#show'
@@ -9,6 +10,9 @@ Rails.application.routes.draw do
   get '/signup', to: 'users#new'
   get '/profile', to: 'splash_screen#profile'
 
+  get    '/login',   to: 'sessions#new'
+  post   '/login',   to: 'sessions#create'
+  delete '/logout',  to: 'sessions#destroy'
   # FIXME: Need to change path later.
   get 'teams/new'
 
