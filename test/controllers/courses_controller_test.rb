@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ClassesControllerTest < ActionDispatch::IntegrationTest
   test "should get new" do
-    get '/classes'
+    get '/courses'
     assert_response :success
   end
 
