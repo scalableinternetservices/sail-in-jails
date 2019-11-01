@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/join', to: 'splash_screen#join'
   get '/create', to: 'splash_screen#create'
   get '/signup', to: 'users#new'
+  get '/profile', to: 'splash_screen#profile'
 
   # FIXME: Need to change path later.
   get 'teams/new'
