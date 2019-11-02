@@ -1,0 +1,6 @@
+language: ruby
+
+script:
+ - bundle install
+ - bundle exec rails db:migrate
+ - rails test
