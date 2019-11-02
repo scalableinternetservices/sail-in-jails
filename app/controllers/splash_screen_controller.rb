@@ -3,6 +3,7 @@ class SplashScreenController < ApplicationController
   end
 
   def create
+    @team = Team.new(params[:team])
   end
 
   def team_index
