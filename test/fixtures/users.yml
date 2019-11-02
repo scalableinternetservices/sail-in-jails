@@ -6,7 +6,7 @@ one:
   course:
   bio: MyText
   team_id:
-  pwd_hash: MyString
+  password_digest: MyString
 
 two:
   name: MyString
@@ -14,4 +14,4 @@ two:
   course:
   bio: MyText
   team_id:
-  pwd_hash: MyString
+  password_digest: MyString
