@@ -8,7 +8,7 @@ class CoursesController < ApplicationController
   def create
     @class = Course.create(class_params)
     if @class.save
-      @class_url = request.base_url + '/' + @class.id.to_s
+      @class_url = request.base_url + '/join/' + @class.id.to_s
       @all_classes = Course.all
       render 'new'
     else

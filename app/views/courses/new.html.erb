@@ -19,7 +19,7 @@
     <br>
     <h4>Class: <%= x.name %></h4>
     <p> 
-      Link: <%= request.base_url + '/' + x.id.to_s %>
+      Link: <%= link_to request.base_url + '/join/' + x.id.to_s, "/join/" + x.id.to_s %>
       <%= button_to "delete", course_path(:id => x.id), :method => :delete %>
     </p>
   <% end %>

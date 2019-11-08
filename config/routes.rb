@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/show', to: 'teams#show'
   get '/courses', to: 'courses#new'
   get '/join', to: 'splash_screen#join'
+  get '/join/:id', to: 'splash_screen#join'
   get '/create', to: 'splash_screen#create'
   get '/signup', to: 'users#new'
   get '/profile', to: 'splash_screen#profile'
