@@ -8,9 +8,9 @@ class SplashScreenControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get create" do
-    get create_path
+    get '/create'
     assert_response :success
-    assert_select "title", "Create | Group App"
+    assert_select "title", "New Team | Group App"
   end
 
 
