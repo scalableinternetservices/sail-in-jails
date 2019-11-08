@@ -3,6 +3,10 @@ class TeamsController < ApplicationController
   def new
     @team = Team.new
   end
+  
+  def team_index
+    @teams = Team.all
+  end 
 
   def show
     @team = Team.find(params[:id])

@@ -1,20 +1,17 @@
-<h1>This is show page! </h1>
-<p>Find me in app/views/teams/new.html.erb</p>
-
-
-
+<h1>Welcome to the Team!!! </h1>
 
 <ul>
   <p>
     Team Name: <%= @team.name %>
+    <%= link_to "Change Team Name", '#', class: "btn btn-medium btn-primary" %>
     <br>
     Team Description: <%= @team.desc %> 
+    
     <br>
     Team Members: 
     <%= User.find_by(team_id: @team.id) do |member| %>
     <%= prints member.name %>
     <% end %>
-    
   </p>
   
   
