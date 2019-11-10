@@ -3,33 +3,49 @@
 <h1>Join Team Screen</h1>
 <p>This is where all the teams would go that you can join</p>
 
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-    Select Course <b class="caret"></b>
-  </a>
-  <ul class="dropdown-menu">
-    <% Course.all.each do |course| %>
-      <li><%= link_to course.name , "/join/" + course.id.to_s %></li>
-    <% end %>
-  </ul>
-</li>
+<% if !logged_in? %>
+  <li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+      Select Course <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <% Course.all.each do |course| %>
+        <li><%= link_to course.name , "/join/" + course.id.to_s %></li>
+      <% end %>
+    </ul>
+  </li>
+<% end %>
 
 <% if @course != nil %>
   Teams for course <%= @course.name %>
 <% end %>
 
-<ul>
-  <% Team.all.each do |team| %>
-    <br>
-    <% if @id == nil || team.course == @id %>
-      <h4>Class: <%= team.course %></h4>
-      <p>
-
-        Team Name: <%= link_to team.name, team %>
-        <br>
-        Description: <%= team.desc %>
-        <%= link_to "Join Team Now!", '/teams/' + team.id.to_s, class: "btn btn-medium btn-primary" %>
-      </p>
+<ul>  
+  <% if !logged_in? %>
+    <% Team.all.each do |team| %>
+      <br>
+      <% if @id == nil || team.course == @id %>
+        <h4>Class: <%= team.course %></h4>
+        <p>
+          Team Name: <%= link_to team.name, team %>
+          <br>
+          Description: <%= team.desc %>
+        </p>
+      <% end %>
     <% end %>
+  <% end %>
+
+  <% if logged_in? %>
+      <% Team.all.each do |team| %>
+        <br>
+        <% if current_user.course == team.course %>
+          <p>
+            Team Name: <%= link_to team.name, team %>
+            <br>
+            Description: <%= team.desc %>
+            <%= link_to "Join Team Now!", '/teams/' + team.id.to_s, class: "btn btn-medium btn-primary" %>
+          </p>
+        <% end %>
+      <% end %>
   <% end %>
 </ul>
