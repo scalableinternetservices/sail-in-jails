@@ -13,7 +13,11 @@ class TeamsController < ApplicationController
   end
   
   def edit_team
-    render 'edit_team'
+
+  end
+
+  def save_team_changes
+    
   end
   
 
