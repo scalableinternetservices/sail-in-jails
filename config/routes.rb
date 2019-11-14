@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   get '/signup', to: 'users#new'
   get '/profile', to: 'splash_screen#profile'
+  
+  get '/edit_team', to: 'teams#edit_team'
 
 
   get    '/login',   to: 'sessions#new'
