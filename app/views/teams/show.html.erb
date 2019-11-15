@@ -3,21 +3,18 @@
 <ul>
   <p>
     Team Name: <%= @team.name %>
-    <%= link_to "Change Team Name", '#', class: "btn btn-medium btn-primary" %>
-    <br>
-    Team Description: <%= @team.desc %> 
     
-    <br>
+    <br><br>
+    
+    Team Description: <%= @team.desc %> 
+    <br><br>
+    
     Team Members: 
     <%= User.find_by(team_id: @team.id) do |member| %>
     <%= prints member.name %>
     <% end %>
+    <br><br>
+    
+    <%= link_to "Update Team Profile", '/edit_team/' + @team.id.to_s , class: "btn btn-medium btn-primary" %>
   </p>
-  
-  
-  
-  
-  
-  
-  
 </ul>

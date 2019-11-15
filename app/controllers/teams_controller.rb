@@ -11,6 +11,21 @@ class TeamsController < ApplicationController
   def show
     @team = Team.find(params[:id])
   end
+  
+  def edit_team
+    @team = Team.find(params[:id])
+  end
+  
+  def update
+    @team = Team.find(params[:id])
+    if @team.update_attributes(team_params)
+      render 'show'
+    else 
+      render 'edit_team'
+    end 
+  end 
+  
+
 
   def create
     @team = Team.new(team_params)
