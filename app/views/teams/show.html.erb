@@ -14,6 +14,6 @@
     <% end %>
     <br><br>
     
-    <%= link_to "Update Team Profile", edit_team_path, class: "btn btn-medium btn-primary" %>
+    <%= link_to "Update Team Profile", '/edit_team/' + @team.id.to_s , class: "btn btn-medium btn-primary" %>
   </p>
 </ul>
