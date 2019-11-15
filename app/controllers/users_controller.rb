@@ -8,7 +8,14 @@ class UsersController < ApplicationController
   end
 
   def index
+    @user = User.find(params[:id])
   end
+  
+  def profile 
+    if logged_in?
+      @user = User.where(id: current_user.id)[0]
+    end
+  end 
 
   def create
     @user = User.new(user_params)

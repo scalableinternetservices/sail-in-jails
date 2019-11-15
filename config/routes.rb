@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get '/join/:id', to: 'splash_screen#join'
 
   get '/signup', to: 'users#new'
-  get '/profile', to: 'splash_screen#profile'
+  get '/profile', to: 'users#profile'
   
   get '/edit_team/:id', to: 'teams#edit_team'
 
