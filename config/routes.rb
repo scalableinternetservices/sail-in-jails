@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get '/profile', to: 'users#profile'
   
   get '/edit_team/:id', to: 'teams#edit_team'
+  get '/edit_profile/:id', to: 'users#edit_profile'
 
 
   get    '/login',   to: 'sessions#new'
