@@ -1,8 +1,8 @@
 require 'test_helper'
 
-class ClassesControllerTest < ActionDispatch::IntegrationTest
+class CoursesControllerTest < ActionDispatch::IntegrationTest
   test "should get new" do
-    get '/courses'
+    get '/courses/create'
     assert_response :success
   end
 

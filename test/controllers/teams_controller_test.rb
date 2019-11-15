@@ -2,7 +2,7 @@ require 'test_helper'
 
 class TeamsControllerTest < ActionDispatch::IntegrationTest
   test "should get new" do
-    get teams_new_url
+    get '/create'
     assert_response :success
   end
 
