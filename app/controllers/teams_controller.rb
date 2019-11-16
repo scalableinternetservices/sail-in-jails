@@ -54,6 +54,10 @@ class TeamsController < ApplicationController
     end
   end
 
+  def add_user
+    current_user.update(team_id: params[:id])
+  end
+
   private
   def team_params
     params.require(:team).permit(:name, :desc)

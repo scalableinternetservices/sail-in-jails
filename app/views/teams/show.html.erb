@@ -12,13 +12,15 @@
 
     <h4> Team Members: </h4>
 
-    <% @members.each do |member| %>
+    <% if @members.each do |member| %>
       <%= member.name %>
       <br>
+    <% end.empty? %>
+      No members :(
     <% end %>
 
     <br><br>
-
     <%= link_to "Update Team Profile", '/edit_team/' + @team.id.to_s , class: "btn btn-medium btn-primary" %>
+    <%= button_to 'Join Team Now!', action: "add_user", :method => :post %>
   </p>
 </ul>

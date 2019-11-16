@@ -7,11 +7,11 @@ Rails.application.routes.draw do
 
   # USER & SESSION
   get '/signup', to: 'users#new'
-  
+
   get '/profile', to: 'splash_screen#profile'
-  
+
   get '/edit_team/:id', to: 'teams#edit_team'
-  
+
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   # TEAM
   get '/teams/:id', to: 'teams#show'
+  post '/teams/:id', to: 'teams#add_user'
   get '/create', to: 'teams#new'
 
   # COURSE
