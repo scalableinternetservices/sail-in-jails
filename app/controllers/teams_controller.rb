@@ -15,6 +15,7 @@ class TeamsController < ApplicationController
 
   def show
     @team = Team.find(params[:id])
+    @members = User.where(team_id: @team.id)
   end
 
   def edit_team
@@ -22,7 +23,6 @@ class TeamsController < ApplicationController
   end
 
   def update
-    #make sure the user is in the right 
     if logged_in?
       @team = Team.find(params[:id])
       @user = User.where(id: current_user.id)[0]
@@ -30,19 +30,18 @@ class TeamsController < ApplicationController
       if @user.team_id = @team.id && @user.course == @team.course
         if @team.update_attributes(team_params)
           render 'show'
-        else 
+        else
           render 'edit_team'
-        end 
+        end
       else
         flash.now[:danger] = 'User not in team!'
         render 'edit_team'
-      end 
+      end
     else
       flash.now[:danger] = 'Not logged in!'
       render 'edit_team'
     end
-  end 
-  
+  end
 
   def create
     @team = Team.new(team_params)

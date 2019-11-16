@@ -6,7 +6,7 @@ module SplashScreenHelper
           return course_name[0].name
         else
           return "This team does not have a course!"
-        end 
+        end
       end
 
 end
