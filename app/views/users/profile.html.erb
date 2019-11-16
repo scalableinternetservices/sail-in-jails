@@ -9,8 +9,7 @@
     Bio: <%= @user.bio %>
     <br>
     Class: 
-    <%= @team.course if !(@team.nil?) %>
-    <%= "N/A" if @team.nil? %>
+    <%= Course.find(@user.course).name if !(@user.course.nil?) && !(Course.find(@user.course).nil?)%>
     <br>
     Team Name: 
     <%= @team.name if !(@team.nil?) %>
