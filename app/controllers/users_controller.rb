@@ -16,11 +16,11 @@ class UsersController < ApplicationController
   end
   
   def update
-    
     @user = User.find(params[:id])
-    if @user.update_attributes(user_update_params)
+    if @user.update_attributes!(user_update_params)
       render 'profile'
     else
+      Rails.logger.info(@user.errors.messages.inspect)
       render 'edit_profile'
     end
   end 
@@ -50,7 +50,9 @@ class UsersController < ApplicationController
     end
     
     def user_update_params
-      params.require(:user).permit(:name, :email, :bio)
+      user_params = params.require(:user).permit(:name, :email, :bio, :password, :password_confirmation)
+      user_params[:course] = @user.course
+      return user_params
     end
 
 end
