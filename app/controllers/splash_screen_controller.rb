@@ -17,4 +17,8 @@ class SplashScreenController < ApplicationController
     @teams = Team.all
   end 
 
+private
+
+
+
 end
