@@ -24,8 +24,8 @@
   <% if !logged_in? %>
     <% Team.all.each do |team| %>
       <br>
-      <% if @id == nil || team.course == @id %>
-        <h4>Class: <%= team.course %></h4>
+      <% if @id == nil || team.course == @id.to_i %>
+        <h4>Class: <%= Course.find(team.course).name %></h4>
         <p>
           Team Name: <%= link_to team.name, team %>
           <br>
