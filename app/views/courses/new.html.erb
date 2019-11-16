@@ -1,6 +1,6 @@
-<% provide(:title, "Create Class") %>
+<% provide(:title, "Create a Course") %>
 
-<h1>Create a Class</h1>
+<h1>Create a course</h1>
 
 <div class = "row">
   <div class="col-md-6 col-md-offset-3">
@@ -8,21 +8,17 @@
       <%= f.label :name %>
       <%= f.text_field :name %>
 
-      <%= f.submit "Create Class", class: "btn btn-primary" %>
+      <%= f.submit "Create!", class: "btn btn-primary" %>
     <% end %>
-
-    <%= @class_url %>
   </div>
 </div>
 <div>
   <% @all_classes.each do |x| %>
     <br>
-    <h4>Class: <%= x.name %></h4>
-    <p> 
+    <h4>Course: <%= x.name %></h4>
+    <p>
       Link: <%= link_to request.base_url + '/join/' + x.id.to_s, "/join/" + x.id.to_s %>
       <%= button_to "delete", course_path(:id => x.id), :method => :delete %>
     </p>
   <% end %>
 </div>
-
-
