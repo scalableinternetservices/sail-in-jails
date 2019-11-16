@@ -2,19 +2,23 @@
 
 <ul>
   <p>
-    Team Name: <%= @team.name %>
-    
+    <h4> Team Name: </h4> <%= @team.name %>
+
+    <br></br>
+
+    <h4> Team Description: </h4> <%= @team.desc %>
+
     <br><br>
-    
-    Team Description: <%= @team.desc %> 
-    <br><br>
-    
-    Team Members: 
-    <%= User.find_by(team_id: @team.id) do |member| %>
-    <%= prints member.name %>
+
+    <h4> Team Members: </h4>
+
+    <% @members.each do |member| %>
+      <%= member.name %>
+      <br>
     <% end %>
+
     <br><br>
-    
+
     <%= link_to "Update Team Profile", '/edit_team/' + @team.id.to_s , class: "btn btn-medium btn-primary" %>
   </p>
 </ul>
