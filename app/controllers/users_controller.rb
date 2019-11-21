@@ -4,26 +4,58 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    if logged_in?
+      @user = User.where(id: current_user.id)[0]
+    end
   end
 
   def index
     @user = User.find(params[:id])
   end
   
+  
   def edit_profile
-    @user = User.find(params[:id])
+    if logged_in?
+      @user = User.where(id: current_user.id)[0]
+    end
+  end
+  
+  def edit_name
+    if logged_in?
+      @user = User.where(id: current_user.id)[0]
+    end 
+  end
+  
+  def edit_email
+    if logged_in?
+      @user = User.where(id: current_user.id)[0]
+    end 
   end
   
   def update
-    
-    @user = User.find(params[:id])
-    if @user.update_attributes(user_update_params)
-      render 'profile'
-    else
-      render 'edit_profile'
+    if logged_in?
+      @user = User.where(id: current_user.id)[0]
+  
+      if @user.update_attributes(user_update_params)
+        render 'show'
+      else
+        render 'edit_profile'
+      end
     end
   end 
+  
+  # def update
+  #   if logged_in?
+  #     @user = User.where(id: current_user.id)[0]
+      
+  
+  #     if @user.update_attributes(user_update_params)
+  #       render 'show'
+  #     else
+  #       render 'edit_profile'
+  #     end
+  #   end
+  # end 
   
   
   def profile 
@@ -50,7 +82,7 @@ class UsersController < ApplicationController
     end
     
     def user_update_params
-      params.require(:user).permit(:name, :email, :bio)
+      params.require(:user).permit!
     end
 
 end

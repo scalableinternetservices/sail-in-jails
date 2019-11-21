@@ -2,12 +2,18 @@
 
 <ul>
   <p>
-    Name: <%= @user.name %>
-    <br>
-    Email: <%= @user.email %>
-    <br>
-    Bio: <%= @user.bio %>
-    <br>
+    Name: <%= @user.name %><br>
+    <%= link_to "Update Name", '/edit_name/' + @user.id.to_s, class: "btn btn-medium btn-primary" %>
+    <br><br>
+    
+    Email: <%= @user.email %><br>
+    <%= link_to "Update Email", '/edit_email/' + @user.id.to_s, class: "btn btn-medium btn-primary" %>
+    <br><br>
+    
+    Bio: <%= @user.bio %><br>
+    <%= link_to "Update Bio", '#', class: "btn btn-medium btn-primary" %>
+    <br><br>
+    
     Class: 
     <%= @team.course if !(@team.nil?) %>
     <%= "N/A" if @team.nil? %>

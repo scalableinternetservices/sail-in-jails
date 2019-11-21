@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   
   get '/edit_team/:id', to: 'teams#edit_team'
   get '/edit_profile/:id', to: 'users#edit_profile'
+  
+  get '/edit_name/:id', to: 'users#edit_name'
+  get '/edit_email/:id', to: 'users#edit_email'
 
 
   get    '/login',   to: 'sessions#new'
