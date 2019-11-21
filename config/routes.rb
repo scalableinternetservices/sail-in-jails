@@ -7,10 +7,11 @@ Rails.application.routes.draw do
 
   # USER & SESSION
   get '/signup', to: 'users#new'
-
-  get '/profile', to: 'splash_screen#profile'
-
+  
+  get '/profile', to: 'users#profile'
+  
   get '/edit_team/:id', to: 'teams#edit_team'
+  get '/edit_profile/:id', to: 'users#edit_profile'
 
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'

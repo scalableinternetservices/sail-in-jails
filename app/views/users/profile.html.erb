@@ -1,0 +1,25 @@
+<h1>User's Profile</h1>
+
+<ul>
+  <p>
+    Name: <%= @user.name %>
+    <br>
+    Email: <%= @user.email %>
+    <br>
+    Bio: <%= @user.bio %>
+    <br>
+    Class: 
+    <%= Course.find(@user.course).name if !(@user.course.nil?) && !(Course.find(@user.course).nil?)%>
+    <br>
+    Team Name: 
+    <%= @team.name if !(@team.nil?) %>
+    <%= "N/A" if @team.nil? %>
+    <br><br> 
+    
+    
+    
+    <%= link_to "Update User Profile", '/edit_profile/' + @user.id.to_s, class: "btn btn-medium btn-primary" %>
+    <br><br>
+    <%= link_to "Leave Team", '#', class: "btn btn-medium btn-primary" %>
+  </p>
+</ul>
