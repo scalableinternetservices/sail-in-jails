@@ -20,7 +20,7 @@
   Teams for course <%= @course.name %>
 <% end %>
 
-<ul>  
+<ul>
   <% if !logged_in? %>
     <% Team.all.each do |team| %>
       <br>
@@ -43,7 +43,6 @@
             Team Name: <%= link_to team.name, team %>
             <br>
             Description: <%= team.desc %>
-            <%= link_to "Join Team Now!", '/teams/' + team.id.to_s, class: "btn btn-medium btn-primary" %>
           </p>
         <% end %>
       <% end %>

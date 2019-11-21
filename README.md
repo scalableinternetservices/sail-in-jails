@@ -1,24 +1,12 @@
-# README
+# Sail in Jails
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Welcome to our app! With sail-in-jails team-matching application, you can create and join courses and teams.
 
-Things you may want to cover:
+Implemented by:
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+| Name  | Pic |
+| ------------- | ------------- |
+| Anton  | <img src="img/anton.png" width="200" height="200">  |
+| Joel | <img src="img/joel.png" width="200" height="200">  |
+| John  | <img src="img/john.png" width="200" height="200">  |
+| Sid  | <img src="img/sid.png" width="200" height="200">  |

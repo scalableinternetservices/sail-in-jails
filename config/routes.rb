@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
   # TEAM
   get '/teams/:id', to: 'teams#show'
+  post '/teams/:id', to: 'teams#add_user'
   get '/create', to: 'teams#new'
 
   # COURSE
