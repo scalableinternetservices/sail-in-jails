@@ -1,4 +1,6 @@
 class CoursesController < ApplicationController
+  skip_before_action :verify_authenticity_token
+
   def new
     @class = Course.new
     @all_classes = Course.all
@@ -21,8 +23,12 @@ class CoursesController < ApplicationController
 
   def destroy
     if Course.find(params[:id]).destroy
+      User.where(course: params[:id]).destroy_all
+      Team.where(course: params[:id]).destroy_all
     end
+    #delete all the teams and profiles attached to said class
 
+    
     @class = Course.new
     @all_classes = Course.all
     redirect_to '/courses'

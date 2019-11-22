@@ -1,8 +1,8 @@
 <% provide(:title, "Edit User's Information") %>
-<h1>Update user's info</h1>
 
-<div class="row">
+<div class="row edit-user-boarder">
   <div class="col-md-6 col-md-offset-3">
+    <h1>Update user's info</h1>
     <%= form_with(model: @user, local: true) do |f| %>
 
       <%= f.label :name %>

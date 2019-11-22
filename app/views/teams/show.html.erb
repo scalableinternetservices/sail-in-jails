@@ -1,26 +1,30 @@
-<h1>Welcome to the Team!!! </h1>
 
-<ul>
-  <p>
-    <h4> Team Name: </h4> <%= @team.name %>
+<div class="team-profile-page">
+  <h1>Welcome to the Team!!! </h1>
 
-    <br></br>
+  <ul>
+    <p>
+      <h4> Team Name: </h4> <%= @team.name %>
 
-    <h4> Team Description: </h4> <%= @team.desc %>
+      <br></br>
 
-    <br><br>
+      <h4> Team Description: </h4> <%= @team.desc %>
 
-    <h4> Team Members: </h4>
+      <br><br>
 
-    <% if @members.each do |member| %>
-      <%= member.name %>
-      <br>
-    <% end.empty? %>
-      No members :(
-    <% end %>
+      <h4> Team Members: </h4>
 
-    <br><br>
-    <%= link_to "Update Team Profile", '/edit_team/' + @team.id.to_s , class: "btn btn-medium btn-primary" %>
-    <%= button_to 'Join Team Now!', action: "add_user", :method => :post %>
-  </p>
-</ul>
+      <% get_team_members.each do |m| %>
+        <%= m.name %><br/>
+      <% end %>
+
+      <br><br>
+      <%= link_to "Update Team Profile", '/edit_team/' + @team.id.to_s , class: "btn btn-medium btn-primary" %>
+      </br>
+      </br>
+      <% if logged_in? %>
+        <%= button_to 'Join Team Now!', action: "add_user", :method => :post, class: "btn btn-medium btn-primary" %>
+      <% end %>
+    </p>
+  </ul>
+</div>
