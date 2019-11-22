@@ -16,12 +16,16 @@ class UsersController < ApplicationController
   end
   
   def update
-    @user = User.find(params[:id])
-    if @user.update_attributes!(user_update_params)
-      render 'profile'
+    if loggin_in? && current_user.id == params[:id]
+      @user = User.find(params[:id])
+      if @user.update_attributes!(user_update_params)
+        render 'profile'
+      else
+        Rails.logger.info(@user.errors.messages.inspect)
+        render 'edit_profile'
+      end
     else
-      Rails.logger.info(@user.errors.messages.inspect)
-      render 'edit_profile'
+      redirect_to join_path
     end
   end 
   
@@ -30,14 +34,24 @@ class UsersController < ApplicationController
     if logged_in?
       @user = User.where(id: current_user.id)[0]
       @team = Team.find_by(id: @user.team_id)
+    else 
+      redirect_to join_path
     end
   end 
+
+  def leave_team
+    @user = User.where(id: current_user.id)[0]
+    @user.team_id = nil
+    if @user.save
+      redirect_to join_path
+    end
+  end
 
   def create
     @user = User.new(user_params)
     if @user.save
       log_in @user
-      redirect_to @user
+      redirect_to join_path
       flash[:success] = "Welcome to the Sample App!"
     else
       render 'new'

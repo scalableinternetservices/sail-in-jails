@@ -27,7 +27,7 @@ class TeamsController < ApplicationController
       @team = Team.find(params[:id])
       @user = User.where(id: current_user.id)[0]
 
-      if @user.team_id = @team.id && @user.course == @team.course
+      if @user.team_id == @team.id && @user.course == @team.course
         if @team.update_attributes(team_params)
           render 'show'
         else
@@ -47,7 +47,7 @@ class TeamsController < ApplicationController
     @team = Team.new(team_params)
     @team.course = current_user.course
     if @team.save
-      render 'show'
+      redirect_to '/teams/' + (@team.id).to_s
     else
       flash.now[:danger] = 'Invalid info!'
       render 'new'
@@ -55,7 +55,13 @@ class TeamsController < ApplicationController
   end
 
   def add_user
-    current_user.update(team_id: params[:id])
+    if logged_in? 
+      @team = Team.where(id: params[:id])[0]
+      if current_user.course == @team.course
+        current_user.update(team_id: params[:id])
+        redirect_to '/teams/' + params[:id]
+      end
+    end
   end
 
   private

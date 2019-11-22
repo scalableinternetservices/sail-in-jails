@@ -20,6 +20,6 @@
     
     <%= link_to "Update User Profile", '/edit_profile/' + @user.id.to_s, class: "btn btn-medium btn-primary" %>
     <br><br>
-    <%= link_to "Leave Team", '#', class: "btn btn-medium btn-primary" %>
+    <%= button_to "Leave Team", '/profile', class: "btn btn-medium btn-primary" %>
   </p>
 </ul>

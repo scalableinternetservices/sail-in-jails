@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/signup', to: 'users#new'
   
   get '/profile', to: 'users#profile'
+  post '/profile', to: 'users#leave_team'
   
   get '/edit_team/:id', to: 'teams#edit_team'
   get '/edit_profile/:id', to: 'users#edit_profile'
@@ -16,7 +17,7 @@ Rails.application.routes.draw do
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
-  get '/profile', to: 'splash_screen#profile'
+  #get '/profile', to: 'splash_screen#profile'
 
   # TEAM
   get '/teams/:id', to: 'teams#show'
