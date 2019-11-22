@@ -1,9 +1,9 @@
 <% provide(:title, "Create a Course") %>
 
-<h1>Create a course</h1>
 
 <div class = "row">
-  <div class="col-md-6 col-md-offset-3">
+  <div class="col-md-6 col-md-offset-3 create-course-header">
+    <h1>Create a course</h1>
     <%= form_for @class, url: 'courses', local: true, :method=> :POST, :html=>{:id=>"create_form"} do |f| %>
       <%= f.label :name %>
       <%= f.text_field :name %>
@@ -12,13 +12,21 @@
     <% end %>
   </div>
 </div>
+</br>
 <div>
   <% @all_classes.each do |x| %>
-    <br>
-    <h4>Course: <%= x.name %></h4>
-    <p>
-      Link: <%= link_to request.base_url + '/join/' + x.id.to_s, "/join/" + x.id.to_s %>
-      <%= button_to "delete", course_path(:id => x.id), :method => :delete %>
-    </p>
+    <div class="created-course-box"
+      <br>
+      <div class="created-course-top">
+        <h4>Course Name: <%= x.name %></h4>
+        <p>
+          Course Link: <%= link_to request.base_url + '/join/' + x.id.to_s, "/join/" + x.id.to_s %>
+        </p>
+      </div>
+      <div class="created-course-bottom">
+        <%= button_to "delete", course_path(:id => x.id), :method => :delete %>
+      </div>
+    </div>
+    </br>
   <% end %>
 </div>

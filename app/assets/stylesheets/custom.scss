@@ -5,6 +5,159 @@
 
 $gray-medium-light: #eaeaea;
 
+/* edit user page */
+.edit-user-boarder {
+  height: 90vh;
+  width: 75vw;
+  min-height: 90vh;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 100px;
+}
+
+/* edit team page */
+.edit-team-boarder {
+  height: 90vh;
+  width: 75vw;
+  min-height: 90vh;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 100px;
+}
+
+/*join team screen*/
+.join-team-header {
+  // background-color: rgb(255, 255, 255);
+  padding: 15px;
+  // border-style: solid;
+  // border-width: .5px .5px 0px .5px;
+  // border-radius: 5px 5px 0px 0px;
+}
+
+.join-team-dropdown {
+  list-style-type: none;
+}
+
+.join-team-teams {
+  background-color: rgb(255, 255, 255);
+  padding: 15px;
+  border-style: solid;
+  border-width: .5px;
+  border-radius: 5px 5px 5px 5px;
+}
+
+/* login and sign up page */
+.login-box {
+  background-color: rgb(255, 255, 255);
+  padding: 15px;
+  border-style: solid;
+  border-width: .5px;
+  border-radius: 5px;
+}
+
+/* Profile page */
+.profile-page-outline {
+  height: 90vh;
+  width: 75vw;
+  min-height: 90vh;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 100px;
+}
+
+/* Team profile page */
+.team-profile-page {
+  height: 90vh;
+  width: 75vw;
+  min-height: 90vh;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 100px;
+}
+
+/*Create course page*/
+.create-course-header {
+  // background-color: rgb(255, 255, 255);
+  padding: 15px;
+  // border-style: solid;
+  // border-width: .5px;
+  // border-radius: 5px;
+}
+
+.created-course-box {
+  background-color: rgb(255, 255, 255);
+  padding: 15px;
+  border-style: solid;
+  border-width: .5px;
+  border-radius: 5px;
+}
+
+.created-course-top {
+  //color: rgb(255,255,255);
+  //background-color: rgb(0, 0, 0);
+}
+
+.created-course-bottom {
+  //background-color: rgb(255, 255, 255);
+}
+
+/* backgrounds */
+
+.usersnew {
+  background-image: image-url('login_sign_up.jpg');
+  background-size: cover; 
+}
+
+.sessionsnew {
+  background-image: image-url('login_sign_up.jpg');
+  background-size: cover; 
+}
+
+.sessionscreate {
+  background-image: image-url('login_sign_up.jpg');
+  background-size: cover; 
+}
+
+.splash_screenjoin {
+  background-image: image-url('list_views.jpg');
+  background-size: cover; 
+}
+
+.coursesnew {
+  background-image: image-url('list_views.jpg');
+  background-size: cover; 
+}
+
+.coursescreate {
+  background-image: image-url('list_views.jpg');
+  background-size: cover; 
+}
+
+.usersprofile {
+  background-image: image-url('team_user_profile.jpg');
+  background-size: cover;
+}
+
+.teamsnew {
+  background-image: image-url('list_views.jpg');
+  background-size: cover;
+}
+
+.teamsshow {
+  background-image: image-url('team_user_profile.jpg');
+  background-size: cover;
+}
+
+.teamsedit_team {
+  background-image: image-url('team_user_profile.jpg');
+  background-size: cover;
+}
+
+.usersedit_profile {
+  background-image: image-url('team_user_profile.jpg');
+  background-size: cover;
+}
+
 /* universal */
 
 body {

@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   end
   
   def update
-    if loggin_in? && current_user.id == params[:id]
+    if logged_in? && current_user.id.to_s == params[:id]
       @user = User.find(params[:id])
       if @user.update_attributes!(user_update_params)
         render 'profile'
