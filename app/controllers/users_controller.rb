@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    #fresh_when last_modified: @user.updated_at 
   end
 
   def index
@@ -22,6 +23,7 @@ class UsersController < ApplicationController
         render 'profile'
       else
         Rails.logger.info(@user.errors.messages.inspect)
+        #flash[:danger] = "Welcome to the Sample App!"
         render 'edit_profile'
       end
     else
