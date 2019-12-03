@@ -10,7 +10,7 @@
         Select Course <b class="caret"></b>
       </a>
       <ul class="dropdown-menu">
-        <% Course.all.each do |course| %>
+        <% @all_courses.each do |course| %>
           <li><%= link_to course.name , "/join/" + course.id.to_s %></li>
         <% end %>
       </ul>
@@ -25,7 +25,7 @@
 <div class="">
   <ul>
     <% if !logged_in? %>
-      <% Team.all.each do |team| %>
+      <% @all_teams.each do |team| %>
         <% if @id == nil || team.course == @id.to_i %>
           <div class="join-team-teams">
             <h4>Class: <%= get_team_course_name(team) %></h4>
@@ -39,7 +39,7 @@
     <% end %>
 
     <% if logged_in? %>
-        <% Team.all.each do |team| %>
+        <% @all_teams.each do |team| %>
           <div class="join-team-teams">
             <% if current_user.course == team.course %>
               <p>

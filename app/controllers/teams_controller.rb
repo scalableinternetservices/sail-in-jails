@@ -25,9 +25,10 @@ class TeamsController < ApplicationController
   def update
     if logged_in?
       @team = Team.find(params[:id])
-      @user = User.where(id: current_user.id)[0]
+      @user = current_user
 
       if @user.team_id == @team.id && @user.course == @team.course
+        new_team(@team)
         if @team.update_attributes(team_params)
           render 'show'
         else
@@ -56,7 +57,7 @@ class TeamsController < ApplicationController
 
   def add_user
     if logged_in? 
-      @team = Team.where(id: params[:id])[0]
+      @team = current_team
       if current_user.course == @team.course
         current_user.update(team_id: params[:id])
         redirect_to '/teams/' + params[:id]

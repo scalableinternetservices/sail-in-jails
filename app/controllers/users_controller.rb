@@ -4,20 +4,32 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    if logged_in? && current_user.id.to_s == params[:id]
+      @user = current_user
+    else
+      @user = User.where(id: params(:id))[0]
+    end
   end
 
   def index
-    @user = User.find(params[:id])
+    if logged_in? && current_user.id.to_s == params[:id]
+      @user = current_user
+    else
+      @user = User.where(id: params(:id))[0]
+    end
   end
   
   def edit_profile
-    @user = User.find(params[:id])
+    if logged_in? && current_user.id.to_s == params[:id]
+      @user = current_user
+    else
+      @user = User.where(id: params(:id))[0]
+    end
   end
-  
+
   def update
     if logged_in? && current_user.id.to_s == params[:id]
-      @user = User.find(params[:id])
+      @user = current_user
       if @user.update_attributes!(user_update_params)
         render 'profile'
       else
@@ -32,15 +44,16 @@ class UsersController < ApplicationController
   
   def profile 
     if logged_in?
-      @user = User.where(id: current_user.id)[0]
-      @team = Team.find_by(id: @user.team_id)
+      @user = current_user
+      @team = current_team
     else 
       redirect_to join_path
     end
   end 
 
   def leave_team
-    @user = User.where(id: current_user.id)[0]
+    leave_team
+    @user = current_user
     @user.team_id = nil
     if @user.save
       redirect_to join_path

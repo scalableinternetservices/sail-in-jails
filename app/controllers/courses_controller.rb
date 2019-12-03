@@ -18,7 +18,6 @@ class CoursesController < ApplicationController
       @class_url = "failed to create class"
       render 'new'
     end
-
   end
 
   def destroy
@@ -28,7 +27,6 @@ class CoursesController < ApplicationController
     end
     #delete all the teams and profiles attached to said class
 
-    
     @class = Course.new
     @all_classes = Course.all
     redirect_to '/courses'

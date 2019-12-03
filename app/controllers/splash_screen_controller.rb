@@ -1,12 +1,23 @@
 class SplashScreenController < ApplicationController
   def join
-    @id = params[:id]
-    @course = Course.where(id: @id)[0]
 
     if logged_in?
-      @user = User.where(id: current_user.id)[0]
+      @user = current_user
+      @course = current_course
+      if Team.where(course: @user.course)
+        @all_teams = Team.where(course: @user.course)
+      else 
+        @all_teams = []
+      end
     else
+      @id = params[:id]
       @user = User.new
+      @all_courses = Course.all
+      if Team.where(course: @id)
+        @all_teams = Team.where(course: @id)
+      else 
+        @all_teams = []
+      end
     end
   end
 
@@ -18,7 +29,5 @@ class SplashScreenController < ApplicationController
   end 
 
 private
-
-
 
 end
