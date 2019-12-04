@@ -1,11 +1,10 @@
 class CoursesController < ApplicationController
-  skip_before_action :verify_authenticity_token
 
   def new
     @class = Course.new
     @all_classes = Course.all
     @class_url = "//"
-  end 
+  end
 
   def create
     @class = Course.create(class_params)
@@ -28,7 +27,7 @@ class CoursesController < ApplicationController
     end
     #delete all the teams and profiles attached to said class
 
-    
+
     @class = Course.new
     @all_classes = Course.all
     redirect_to '/courses'
