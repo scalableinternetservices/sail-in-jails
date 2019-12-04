@@ -1,5 +1,5 @@
 class TeamsController < ApplicationController
-
+  skip_before_action :verify_authenticity_token
   def new
     if logged_in?
       @team = Team.new
