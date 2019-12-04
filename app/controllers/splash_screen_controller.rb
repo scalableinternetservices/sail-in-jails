@@ -1,5 +1,4 @@
 class SplashScreenController < ApplicationController
-  skip_before_action :verify_authenticity_token
   def join
     @id = params[:id]
     @course = Course.where(id: @id)[0]
