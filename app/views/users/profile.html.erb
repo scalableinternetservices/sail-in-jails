@@ -10,16 +10,15 @@
       <br>
       Bio: <%= @user.bio %>
       <br>
-      Class: 
-      <%= Course.find(@user.course).name if !(@user.course.nil?) && !(Course.find(@user.course).nil?)%>
+      Class:
+      <%= @user.course_name %>
       <br>
-      Team Name: 
-      <%= @team.name if !(@team.nil?) %>
-      <%= "N/A" if @team.nil? %>
-      <br><br> 
-      
-      
-      
+      Team Name:
+      <%= @user.team_name %>
+      <br><br>
+
+
+
       <%= link_to "Update User Profile", '/edit_profile/' + @user.id.to_s, class: "btn btn-medium btn-primary" %>
       <br>
       <%= button_to "Leave Team", '/profile', class: "btn btn-medium btn-primary" %>
