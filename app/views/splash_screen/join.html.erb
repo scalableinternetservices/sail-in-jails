@@ -25,10 +25,10 @@
 <div class="">
   <ul>
     <% if !logged_in? %>
-      <% Team.all.each do |team| %>
+      <% @teams_and_courses.each do |team| %>
         <% if @id == nil || team.course == @id.to_i %>
           <div class="join-team-teams">
-            <h4>Class: <%= get_team_course_name(team) %></h4>
+            <h4>Class: <%= team.course_name %></h4>
             <p>
               <h4>Team Name: <%= link_to team.name, team %></h4>
               <p>Description: <%= team.desc %></p>
@@ -39,14 +39,12 @@
     <% end %>
 
     <% if logged_in? %>
-        <% Team.all.each do |team| %>
+        <% Team.where(course: current_user.course).each do |team| %>
           <div class="join-team-teams">
-            <% if current_user.course == team.course %>
               <p>
                 <h4 style="text-indent: 15px">Team Name: <%= link_to team.name, team %></h4>
                 <h5 style="display: inline-block; text-indent: 40px;">Description</h5>: <%= team.desc %>
               </p>
-            <% end %>
           </div>
         <% end %>
     <% end %>
