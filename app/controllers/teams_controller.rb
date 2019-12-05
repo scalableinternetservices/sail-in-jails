@@ -29,7 +29,7 @@ class TeamsController < ApplicationController
 
       if @user.team_id == @team.id && @user.course == @team.course
         if @team.update_attributes(team_params)
-          render 'show'
+          redirect_to '/teams/'+params[:id]
         else
           render 'edit_team'
         end
@@ -55,7 +55,7 @@ class TeamsController < ApplicationController
   end
 
   def add_user
-    if logged_in? 
+    if logged_in?
       @team = Team.where(id: params[:id])[0]
       if current_user.course == @team.course
         current_user.update(team_id: params[:id])
