@@ -5,17 +5,17 @@ class CoursesController < ApplicationController
     @class = Course.new
     @all_classes = Course.all
     @class_url = "//"
+    
     fresh_when etag: @class || @all_classes
+  
   end 
 
   def create
     @class = Course.create(class_params)
     if @class.save
       @class_url = request.base_url + '/join/' + @class.id.to_s
-      @all_classes = Course.all
       render 'new'
     else
-      @all_classes = Course.all
       @class_url = "failed to create class"
       render 'new'
     end

@@ -1,22 +1,30 @@
 class UsersController < ApplicationController
   def new
     @user = User.new
+    
     fresh_when etag: @user
+    
   end
 
   def show
     @user = User.find(params[:id])
+    
     fresh_when etag: @user 
+    
   end
 
   def index
     @user = User.find(params[:id])
+    
     fresh_when etag: @user 
+    
   end
   
   def edit_profile
     @user = User.find(params[:id])
-    fresh_when etag: @user 
+    
+    fresh_when etag: @user  
+    
   end
   
   def update

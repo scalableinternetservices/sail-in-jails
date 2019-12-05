@@ -11,19 +11,23 @@ class TeamsController < ApplicationController
 
   def team_index
     @teams = Team.all
-    fresh_when etag: @teams
+    
+    fresh_when etag: @teams 
   end
 
   def show
     @team = Team.find(params[:id])
     @members = User.where(team_id: @team.id)
+    
     fresh_when etag: @team || @members
 
   end
 
   def edit_team
     @team = Team.find(params[:id])
+    
     fresh_when etag: @team 
+    
   end
 
   def update
