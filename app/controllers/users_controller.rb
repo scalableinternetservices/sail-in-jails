@@ -5,15 +5,17 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    #fresh_when last_modified: @user.updated_at 
+    fresh_when etag: @user 
   end
 
   def index
     @user = User.find(params[:id])
+    fresh_when etag: @user 
   end
   
   def edit_profile
     @user = User.find(params[:id])
+    fresh_when etag: @user 
   end
   
   def update

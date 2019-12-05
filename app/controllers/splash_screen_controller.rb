@@ -15,6 +15,7 @@ class SplashScreenController < ApplicationController
 
   def team_index
     @teams = Team.all
+    fresh_when etag: @teams 
   end 
 
 private

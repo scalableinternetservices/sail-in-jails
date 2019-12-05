@@ -5,6 +5,7 @@ class CoursesController < ApplicationController
     @class = Course.new
     @all_classes = Course.all
     @class_url = "//"
+    fresh_when etag: @class || @all_classes
   end 
 
   def create

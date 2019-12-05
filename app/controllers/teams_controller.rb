@@ -8,41 +8,22 @@ class TeamsController < ApplicationController
       redirect_to '/login'
     end
   end
-  
-  def create
-    @team = Team.new(team_params)
-    @team.course = current_user.course
-    if @team.save
-      redirect_to '/teams/' + (@team.id).to_s
-    else
-      flash.now[:danger] = 'Invalid info!'
-      render 'new'
-    end
+
+  def team_index
+    @teams = Team.all
+    fresh_when etag: @teams
   end
 
-  def add_user
-    if logged_in? 
-      @team = Team.where(id: params[:id])[0]
-      if current_user.course == @team.course
-        current_user.update(team_id: params[:id])
-        redirect_to '/teams/' + params[:id]
-      end
-    end
-  end
-
-#####################################3
-  #@team = Team.find(params[:id]);
-  #@members = User.where(team_id: @team.id)
-  
   def show
     @team = Team.find(params[:id])
     @members = User.where(team_id: @team.id)
     fresh_when etag: @team || @members
+
   end
 
   def edit_team
     @team = Team.find(params[:id])
-    fresh_when etag: @team  
+    fresh_when etag: @team 
   end
 
   def update
@@ -66,7 +47,27 @@ class TeamsController < ApplicationController
     end
   end
 
-  
+  def create
+    @team = Team.new(team_params)
+    @team.course = current_user.course
+    if @team.save
+      redirect_to '/teams/' + (@team.id).to_s
+    else
+      flash.now[:danger] = 'Invalid info!'
+      render 'new'
+    end
+  end
+
+  def add_user
+    if logged_in? 
+      @team = Team.where(id: params[:id])[0]
+      if current_user.course == @team.course
+        current_user.update(team_id: params[:id])
+        redirect_to '/teams/' + params[:id]
+      end
+    end
+  end
+
   private
   def team_params
     params.require(:team).permit(:name, :desc)
