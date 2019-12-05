@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def new
     @user = User.new
+    fresh_when etag: @user
   end
 
   def show
