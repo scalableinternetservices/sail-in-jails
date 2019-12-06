@@ -3,6 +3,7 @@ class TeamsController < ApplicationController
   def new
     if logged_in?
       @team = Team.new
+      fresh_when etag: @team 
     else
       flash[:notice] = 'Unauthorized people are not allowed to create teams :('
       redirect_to '/login'
@@ -10,24 +11,24 @@ class TeamsController < ApplicationController
   end
 
   def team_index
-    @teams = Team.all
-    
-    fresh_when etag: @teams 
+    if stale?([Team.all, Community.all, Comments.all])
+      @teams = Team.all
+    end
   end
 
   def show
     @team = Team.find(params[:id])
-    @members = User.where(team_id: @team.id)
+    fresh_when([@team, @team.community, @team.comments])
     
-    fresh_when etag: @team || @members
-
+    @members = User.where(team_id: @team.id)
+    fresh_when([@members, @members.community, @members.comments])
+    
+    #fresh_when etag: @team || @members
   end
 
   def edit_team
     @team = Team.find(params[:id])
-    
-    fresh_when etag: @team 
-    
+    fresh_when([@team, @team.community, @team.comments])
   end
 
   def update

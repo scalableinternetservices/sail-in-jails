@@ -2,8 +2,7 @@ class SplashScreenController < ApplicationController
   def join
     @id = params[:id]
     @course = Course.where(id: @id)[0]
-    
-    fresh_when etag: @id || @course 
+    fresh_when etag: @id || @course
     
     if logged_in?
       @user = User.where(id: current_user.id)[0]
@@ -16,8 +15,9 @@ class SplashScreenController < ApplicationController
   end
 
   def team_index
-    @teams = Team.all
-    fresh_when etag: @teams 
+    if stale?([Team.all, Team.community, Team.comments])
+      @teams = Team.all
+    end
   end 
 
 private
